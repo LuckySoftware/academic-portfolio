@@ -1,0 +1,544 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- React & Babel -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef, useCallback, useMemo, createContext, useContext, StrictMode } = React; const { createRoot } = ReactDOM;
+        
+        // /components/PortfolioHero.js
+        const PortfolioHero = ({ name, tagline, photo}) => { return (
+        <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-black text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
+            <div className="text-center p-6 max-w-4xl mx-auto">
+                <img src={photo} alt="Profile" className="size-80 rounded-full mx-auto mb-8 border-4 border-blue-400 dark:border-indigo-600 shadow-2xl transition-all duration-500 transform hover:scale-105 hover:rotate-3" />
+                <h1 className="text-6xl md:text-8xl font-extrabold mb-4 leading-tight tracking-tight drop-shadow-lg">
+                    {name}
+                </h1>
+                <p className="text-2xl md:text-3xl font-light opacity-90 tracking-wide">
+                    {tagline}
+                </p>
+            </div>
+        </section>
+        );}; 
+
+        // /components/PortfolioAbout.js 
+        const PortfolioAbout = ({ title = 'Sobre Mí', description = 'Aquí puedes hablar sobre tu pasión, tus motivaciones y lo que te hace único. Destaca tus intereses, tu visión a futuro y cómo tus experiencias te han moldeado. Sé auténtico y personal.' }) => { return (
+        <section className="py-24 bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
+            <div className="container mx-auto px-6 max-w-5xl">
+                <h2 className="text-5xl font-bold text-center mb-12 text-blue-600 dark:text-indigo-400">
+                    {title}
+                </h2>
+                <p className="text-xl leading-relaxed text-center max-w-3xl mx-auto opacity-90">
+                    {description}
+                </p>
+            </div>
+        </section>
+        ); };
+        
+        // /components/PortfolioSkills.js
+        const SkillBar = ({ name = 'Skill', percentage = 75, color = 'bg-blue-500' }) => (
+        <div className="mb-6">
+            <div className="flex justify-between items-center mb-2">
+                <span className="text-lg font-medium text-gray-800 dark:text-gray-200">{name}</span>
+                <span className="text-sm text-gray-600 dark:text-gray-400">{percentage}%</span>
+            </div>
+            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 shadow-inner">
+                <div className={`${color} h-3 rounded-full transition-all duration-1000 ease-out transform scale-x-100 origin-left`} style={{ width: `${percentage}%` }}></div>
+            </div>
+        </div>
+        ); const PortfolioSkills = ({ skills = [] }) => { return (
+        <section className="py-24 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
+            <div className="container mx-auto px-6 max-w-5xl">
+                <h2 className="text-5xl font-bold text-center mb-16 text-blue-600 dark:text-indigo-400">
+                    Programming Skills
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+                    {skills.map((skill, index) => (
+                    <SkillBar key={index} name={skill.name} percentage={skill.percentage} color={skill.color} /> ))}
+                </div>
+            </div>
+        </section>
+        ); }; 
+        
+        // /components/PortfolioProjectCard.js
+        const PortfolioProjectCard = ({ title = 'Project Title', description = 'A brief description of the project.', imageUrl = '/placeholder-project.jpg', projectLink = '#', githubLink = '#' }) => { return (
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2 hover:scale-102 border border-gray-200 dark:border-gray-700">
+            <img src={imageUrl} alt={title} className="w-full h-56 object-cover object-center transform hover:scale-105 transition-transform duration-500" />
+            <div className="p-8">
+                <h3 className="text-3xl font-bold mb-3 text-gray-900 dark:text-white leading-tight">{title}</h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg">{description}</p>
+                <div className="flex space-x-4">
+                    <a href={projectLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300 text-base font-semibold shadow-md hover:shadow-lg">
+            Project
+            <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0l-6 6"></path></svg>
+          </a>
+                    <a href={githubLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 text-base font-semibold shadow-md hover:shadow-lg">
+            GitHub
+            <svg className="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.499.09.682-.217.682-.483 0-.237-.008-.865-.013-1.7c-2.782.602-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.618.069-.606.069-.606 1.003.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.089 2.91.833.091-.647.35-1.089.636-1.338-2.22-.253-4.555-1.113-4.555-4.953 0-1.096.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.099 2.651.64.7 1.028 1.592 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.579.688.482C21.137 20.281 24 16.523 24 12.017 24 6.484 19.522 2 12 2Z" clipRule="evenodd"></path></svg>
+          </a>
+                </div>
+            </div>
+        </div>
+        ); };
+
+        // /components/PortfolioProjects.js
+        const PortfolioProjects = ({ projects = [] }) => { return (
+        <section className="py-24 bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
+            <div className="container mx-auto px-6 max-w-6xl">
+                <h2 className="text-5xl font-bold text-center mb-16 text-blue-600 dark:text-indigo-400">
+                    Projects
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    {projects.map((project, index) => (
+                    <PortfolioProjectCard key={index} title={project.title} description={project.description} imageUrl={project.imageUrl} projectLink={project.projectLink} githubLink={project.githubLink} /> ))}
+                </div>
+            </div>
+        </section>
+        ); };
+        
+        // /components/PortfolioResearch.js
+        const ResearchCard = ({ title = 'Research Title', description = 'Brief summary of the research, methodology, and key findings.', link = '#' }) => (
+        <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 leading-tight">{title}</h3>
+            <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg">{description}</p>
+            <a href={link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-blue-600 dark:text-indigo-400 hover:underline text-base font-semibold">
+        See more
+      <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0l-6 6"></path></svg>
+    </a>
+        </div>
+        ); const PortfolioResearch = ({ research = [] }) => { return (
+        <section className="py-24 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
+            <div className="container mx-auto px-6 max-w-5xl">
+                <h2 className="text-5xl font-bold text-center mb-16 text-blue-600 dark:text-indigo-400">
+                    Small Researches 
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    {research.map((item, index) => (
+                    <ResearchCard key={index} title={item.title} description={item.description} link={item.link} /> ))}
+                </div>
+            </div>
+        </section>
+        ); };
+        
+        // /components/PortfolioAchievements.js
+        const PortfolioAchievements = ({ achievements = [] }) => { return (
+        <section className="py-24 bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
+            <div className="container mx-auto px-6 max-w-5xl">
+                <h2 className="text-5xl font-bold text-center mb-16 text-blue-600 dark:text-indigo-400">
+                    Activities, Achievements & Certfificates
+                </h2>
+                <ul className="space-y-8">
+                    {achievements.map((achievement, index) => (
+                    <li key={index} className="flex items-start space-x-6 bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 transform hover:scale-102 transition-transform duration-300">
+                        <svg className="w-8 h-8 text-blue-600 dark:text-indigo-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                        <p className="text-xl text-gray-800 dark:text-gray-200">{achievement}</p>
+                    </li>
+                    ))}
+                </ul>
+            </div>
+        </section>
+        ); };
+        // /components/PortfolioExperience.js 
+        const ExperienceCard = ({ title = 'Role', company = 'Company', dates = 'Dates', description = 'Impacts and responsibilities.' }) => (
+        <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 leading-tight">{title}</h3>
+            <p className="text-blue-600 dark:text-indigo-400 font-semibold mb-1">{company}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{dates}</p>
+            <p className="text-gray-700 dark:text-gray-300 text-lg">{description}</p>
+        </div>
+        ); const PortfolioExperience = ({ experiences = [] }) => { return (
+        <section className="py-24 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
+            <div className="container mx-auto px-6 max-w-5xl">
+                <h2 className="text-5xl font-bold text-center mb-16 text-blue-600 dark:text-indigo-400">
+                    Work Experience
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    {experiences.map((exp, index) => (
+                    <ExperienceCard key={index} title={exp.title} company={exp.company} dates={exp.dates} description={exp.description} /> ))}
+                </div>
+            </div>
+        </section>
+        ); };
+
+        // /components/PortfolioVolunteering.js
+        const VolunteeringCard = ({ organization = 'Organization', role = 'Role', dates = 'Dates', description = 'Key responsibilities and impact.' }) => (
+        <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 leading-tight">{organization}</h3>
+            <p className="text-blue-600 dark:text-indigo-400 font-semibold mb-1">{role}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{dates}</p>
+            <p className="text-gray-700 dark:text-gray-300 text-lg">{description}</p>
+        </div>
+        ); const PortfolioVolunteering = ({ volunteering = [] }) => { return (
+        <section className="py-24 bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
+            <div className="container mx-auto px-6 max-w-5xl">
+                <h2 className="text-5xl font-bold text-center mb-16 text-blue-600 dark:text-indigo-400">
+                    Volunteering
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    {volunteering.map((vol, index) => (
+                    <VolunteeringCard key={index} organization={vol.organization} role={vol.role} dates={vol.dates} description={vol.description} /> ))}
+                </div>
+            </div>
+        </section>
+        ); };
+        
+        // /components/PortfolioEducation.js
+        const EducationCard = ({ degree = 'Degree', institution = 'Institution', dates = 'Dates', details = 'GPA/Relevant coursework.' }) => (
+        <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 leading-tight">{degree}</h3>
+            <p className="text-blue-600 dark:text-indigo-400 font-semibold mb-1">{institution}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{dates}</p>
+            <p className="text-gray-700 dark:text-gray-300 text-lg">{details}</p>
+        </div>
+        ); const PortfolioEducation = ({ education = [] }) => { return (
+        <section className="py-24 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
+            <div className="container mx-auto px-6 max-w-5xl">
+                <h2 className="text-5xl font-bold text-center mb-16 text-blue-600 dark:text-indigo-400">
+                    Education
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    {education.map((edu, index) => (
+                    <EducationCard key={index} degree={edu.degree} institution={edu.institution} dates={edu.dates} details={edu.details} /> ))}
+                </div>
+            </div>
+        </section>
+        ); };
+        
+        // /components/PortfolioSports.js
+        const SportCard = ({ name = 'Sport', achievements = [] }) => (
+        <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 leading-tight">{name}</h3>
+            <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2 text-lg">
+                {achievements.map((ach, idx) => (
+                <li key={idx}>{ach}</li>
+                ))}
+            </ul>
+        </div>
+        ); const PortfolioSports = ({ sports = [] }) => { return (
+        <section className="py-24 bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
+            <div className="container mx-auto px-6 max-w-5xl">
+                <h2 className="text-5xl font-bold text-center mb-16 text-blue-600 dark:text-indigo-400">
+                    Sports
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    {sports.map((sport, index) => (
+                    <SportCard key={index} name={sport.name} achievements={sport.achievements} /> ))}
+                </div>
+            </div>
+        </section>
+        ); };
+        
+        // /components/PortfolioHobbies.js
+        const PortfolioHobbies = ({ languages = [], hobbies = [] }) => { return (
+        <section className="py-24 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
+            <div className="container mx-auto px-6 max-w-5xl">
+                <h2 className="text-5xl font-bold text-center mb-16 text-blue-600 dark:text-indigo-400">
+                    Languages & Hobbies
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700">
+                        <h3 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">Languages</h3>
+                        <ul className="space-y-6">
+                            {languages.map((lang, index) => (
+                            <li key={index} className="flex items-center space-x-4">
+                                <svg className="w-7 h-7 text-blue-600 dark:text-indigo-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 10l4 4m0-4l-4 4"></path></svg>
+                                <span className="text-xl text-gray-800 dark:text-gray-200">{lang}</span>
+                            </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700">
+                        <h3 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">Hobbies</h3>
+                        <ul className="space-y-6">
+                            {hobbies.map((hobby, index) => (
+                            <li key={index} className="flex items-center space-x-4">
+                                <svg className="w-7 h-7 text-blue-600 dark:text-indigo-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
+                                <span className="text-xl text-gray-800 dark:text-gray-200">{hobby}</span>
+                            </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        ); }
+        
+        // /components/PortfolioFooter.js
+        const PortfolioFooter = ({ isDarkMode = false, toggleDarkMode = () => {}, githubLink = '#', linkedinLink = '#' }) => { return (
+        <footer className="py-12 bg-gray-950 dark:bg-black text-gray-300 dark:text-gray-500 transition-colors duration-700 ease-in-out">
+            <div className="container mx-auto px-6 max-w-5xl flex flex-col md:flex-row items-center justify-between">
+                <div className="mb-6 md:mb-0 text-center md:text-left">
+                    <p className="text-base">&copy; {new Date().getFullYear()} Luciano Moreira. All rights reserved.</p>
+                </div>
+                <div className="flex items-center space-x-8 mb-6 md:mb-0">
+                    <a href={githubLink} target="_blank" rel="noopener noreferrer" className="text-gray-300 dark:text-gray-500 hover:text-white dark:hover:text-gray-300 transition-colors duration-300 transform hover:scale-110">
+                        <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.499.09.682-.217.682-.483 0-.237-.008-.865-.013-1.7c-2.782.602-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.618.069-.606.069-.606 1.003.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.089 2.91.833.091-.647.35-1.089.636-1.338-2.22-.253-4.555-1.113-4.555-4.953 0-1.096.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.099 2.651.64.7 1.028 1.592 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.579.688.482C21.137 20.281 24 16.523 24 12.017 24 6.484 19.522 2 12 2Z" clipRule="evenodd"></path></svg>
+                    </a>
+                    <a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="text-gray-300 dark:text-gray-500 hover:text-white dark:hover:text-gray-300 transition-colors duration-300 transform hover:scale-110">
+                        <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                    </a>
+                </div>
+                <button onClick={toggleDarkMode} className="px-5 py-2.5 rounded-full border border-gray-700 dark:border-gray-600 text-gray-300 dark:text-gray-500 hover:bg-gray-800 dark:hover:bg-gray-700 transition-colors duration-300 flex items-center text-base font-medium shadow-md hover:shadow-lg transform hover:scale-105">
+          {isDarkMode ? (
+            <svg className="w-6 h-6 mr-2 text-yellow-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.25a9.75 9.75 0 00-9.75 9.75c0 5.385 4.365 9.75 9.75 9.75s9.75-4.365 9.75-9.75A9.75 9.75 0 0012 2.25zM12 21a8.25 8.25 0 01-8.25-8.25c0-4.55 3.7-8.25 8.25-8.25V21z"></path></svg>
+          ) : (
+            <svg className="w-6 h-6 mr-2 text-blue-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.25a9.75 9.75 0 00-9.75 9.75c0 5.385 4.365 9.75 9.75 9.75s9.75-4.365 9.75-9.75A9.75 9.75 0 0012 2.25zM12 21a8.25 8.25 0 01-8.25-8.25c0-4.55 3.7-8.25 8.25-8.25V21z"></path></svg>
+          )}
+          Modo {isDarkMode ? 'Claro' : 'Oscuro'}
+        </button>
+            </div>
+        </footer>
+        ); };
+        
+// /mock/portfolioData.js
+const defaultPortfolioData = {
+    hero: {
+        name: 'Luciano Moreira',
+        tagline: 'Data Scientist | Rugby Player | Robotics & A.I. Enthusiast',
+        photo: '/profile-pic.jpeg', // Updated placeholder for better visual
+    },
+    about: {
+        title: 'About Me',
+        description: 'Hello there! I will talk a little about myself, I am someone who is always looking to grow, whether it is learning something new, pushing my own limits, or helping those around me. I am passionate about technology and robotics, but what matters most to me is making a positive impact on the people I care about. Rugby teaches me valuable lessons every day about teamwork, perseverance, and tackling challenges with a smile. I also love spending time with my friends and family because I truly believe the best experiences are the ones we share with those we love. I am always ready to lend a hand and contribute. The real fulfillment comes from doing things well and making the world a better place.',
+    },
+    skills: [
+        { name: 'Java', percentage: 90, color: 'bg-blue-600' },
+        { name: 'Python', percentage: 82, color: 'bg-blue-600' },
+        { name: 'PHP', percentage: 70, color: 'bg-blue-600' },
+        { name: 'CSS', percentage: 95, color: 'bg-blue-600' },
+        { name: 'HTML', percentage: 97, color: 'bg-blue-600' },
+        { name: 'JavaScript', percentage: 75, color: 'bg-blue-600' },
+        { name: 'Git', percentage: 93, color: 'bg-blue-600' },
+        { name: 'SQL', percentage: 85, color: 'bg-blue-600' },
+        { name: 'Linux Server', percentage: 70, color: 'bg-blue-600' },
+        { name: 'Data Analitics', percentage: 83, color: 'bg-blue-600' },
+    ],
+    projects: [
+        {
+            title: 'Wind Power Data Analytics System',
+            description: 'Designed a wind energy data analytics system that processes turbine metrics into a centralized database, boosting efficiency and predictive maintenance.',
+            imageUrl: '/project-1.jpeg', // Updated placeholder
+            projectLink: 'https://github.com/LuckySoftware/data-analyzer',
+            githubLink: 'https://github.com/LuckySoftware/data-analyzer',
+        },
+        {
+            title: 'Tagged.',
+            description: 'I dove into entrepreneurship by launching a t-shirt brand, handling everything from design and printing to sales and marketing, learning the ropes of turning creativity into a business.',
+            imageUrl: '/tagged.jpeg', // Updated placeholder
+            projectLink: 'https://github.com/LuckySoftware/tagged.',
+            githubLink: 'https://github.com/LuckySoftware/tagged.',
+        },
+        {
+            title: 'Receipt Vault',
+            description: 'I developed a custom payroll management system for my father, automating salary receipts using React and SQL. The solution streamlined recording and keeping, reduced errors, and improved efficiency in employee payment processing.',
+            imageUrl: '/project-3.jpeg', // Updated placeholder
+            projectLink: 'https://github.com/LuckySoftware/receiptVault',
+            githubLink: 'https://github.com/LuckySoftware/receiptVault',
+        },
+    ],
+    research: [
+        {
+            title: 'Economic Evolution of Rural Uruguay (1851-1885)',
+            description: 'This report analyzes the economic evolution of rural Uruguay between 1851 and 1885, focusing on how political conflicts, foreign intervention, and European immigration affected the agricultural and livestock production and the social structure of the country. Through a detailed theoretical framework, a diagnosis of the main problems, and strategic proposals, it aims to understand the causes of the economic and social crisis of the era, as well as to propose solutions to strengthen the State, promote rural education, and attract investments that enable sustainable and balanced development.',
+            link: 'https://docs.google.com/document/d/17A9taOfyDpeSyDcaX-dr4-aKzHzR4_QBsxBJYbPUSww/edit?usp=sharing',
+        },
+        {
+            title: 'Ethics & A.I. Regulations',
+            description: '(Being developed) This research explores the ethical implications of artificial intelligence and the need for regulations to ensure responsible AI development and deployment. It examines current frameworks, identifies gaps, and proposes a comprehensive approach to address ethical concerns in AI technologies.',
+            link: 'https://docs.google.com/document/d/1ZXttE4zEL7saefFcjA8fstan8NcNGrumvEFWyzzhVo8/edit?usp=sharing',
+        },
+        
+    ],
+    achievements: [
+        'Selected Student for a Quantum Computer Course at Uruguayan Faculty | 2025',
+        'National Programming and Robotics Olimpyads | 2024',
+        'Applied 3D Printing Techniques for Enviromental Sustainability Course | 2024',
+        'Male Modeling for Nix | 2024',
+        'IBM Cognitive Class Data Science Certificate | 2023',
+        'IBM Cognitive Class Python For Data Science Certificate | 2023',
+        'Model United Nation Delegate Certificate | 2022',
+    ],
+    experiences: [
+        {
+            title: 'Waiter & Bartender',
+            company: 'FP Catering',
+            dates: 'Since Nov 2024',
+            description: 'Provide customer service and handle orders in a fast-paced environment. Work weekends while managing studies.',
+        },
+        {
+            title: 'Freelance Software Developer',
+            company: 'Lucky Software',
+            dates: 'Mar 2023 - Aug 2024',
+            description: 'Design and build custom websites for small businesses from scratch, focusing on functionality and clean aesthetics. Handle client consultations, UI/UX design, and full-stack development to deliver tailored digital solutions.',
+        },
+    ],
+    volunteering: [
+        {
+            organization: 'Impacto Arcoiris by DESEM',
+            role: 'Volunteer',
+            dates: 'Aug 2023 - Nov 2023',
+            description: 'DESEM is a non-profit organization that launched Impacto Arcoiris, a program designed to detect domestic violence against children. We diagnosed these activities while being trained by psychologists and lawyers to ensure ethical practices.',
+        },
+        {
+            organization: 'Phone Usage Workshop',
+            role: 'Workshop Coordinator & Instructor',
+            dates: 'Jun 2024 - Aug 2024',
+            description: 'I organized and led a workshop at Hogar Israelita, a nursing home, where my team and I taught seniors (aged 70 and above) how to use smartphones and connect with their families through calls.',
+        },
+        {
+            organization: 'EducationUSA University Fair',
+            role: 'Volunteer & Student',
+            dates: 'Sep 2024',
+            description: 'Took part in the staff team of the 2024 Fair of USA Universities to encourage more people on studying abroad.',
+        },
+    ],
+    education: [
+        {
+            degree: 'Secondary Education with a Focus on Information Technology',
+            institution: 'Superior Institute "Brazo Oriental"',
+            dates: '2024 - 2025',
+            details: 'GPA: 3.9/4.0 | Relevant Coursework: Advanced Programming, Database Systems, Web Development, Robotics and 3D printing, Calculus & A.I',
+        },    
+        {
+            degree: 'Secondary Education with a Focus on Information Technology',
+            institution: 'Superior Institute of Technology',
+            dates: '2023',
+            details: 'GPA: 4.0/4.0 | Relevant Coursework: Programming, Network Administration, Electrical Technology & Logic for Computer Science.',
+        },
+    ],
+    sports: [
+        {
+            name: 'Rugby',
+            achievements: [
+                'Active Division II Player for CTM Rugby Club',
+                '"Valentin Martinez" Championship 2024',
+                '"Valentin Martinez" Championship 2023',
+            ],
+        },
+        {
+            name: 'Volleyball',
+            achievements: [
+                '"Hebraica Macabi" Social Volleyball Player',
+                'Participated in national tournaments and community events',
+                'Beach Volleyball enthusiast',
+            ],
+        },
+    ],
+    languages: [
+        'Spanish (Native)',
+        'English (C1 - Advanced)',
+        'Portuguese (B2 - Intermediate)',
+        'German (A2 -Basic)',
+    ],
+    hobbies: [
+        '📸 Taking photos with random ginger people and posting them on Instagram: @pov_ginger',
+        '🧉 Drinking mate',
+        '🧠 Learning about something new every day',
+        '🏋️‍♂️ Going to the GYM',
+        '🎶 Listening to country music',
+        '🌅 Taking sunset photos',
+        '🥾 Hiking and exploring nature',
+    ],
+
+    footer: {
+        githubLink: 'https://github.com/LuckySoftware',
+        linkedinLink: 'https://www.linkedin.com/in/luciano-moreira-dev/',
+    },
+};
+
+// /App.js
+const App = () => {
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    useEffect(() => {
+        // Check for user's preferred color scheme
+        const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedMode = localStorage.getItem('darkMode');
+
+        if (savedMode === 'true') {
+            setIsDarkMode(true);
+        } else if (savedMode === 'false') {
+            setIsDarkMode(false);
+        } else {
+            setIsDarkMode(prefersDarkMode);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (isDarkMode) {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('darkMode', 'true');
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('darkMode', 'false');
+        }
+    }, [isDarkMode]);
+
+    const toggleDarkMode = () => {
+        setIsDarkMode(!isDarkMode);
+    };
+
+    const { 
+        hero, 
+        about, 
+        skills, 
+        projects, 
+        research, 
+        achievements, 
+        experiences, 
+        volunteering, 
+        education, 
+        sports, 
+        languages, 
+        hobbies, 
+        footer 
+    } = defaultPortfolioData;
+
+    return (
+        <div className="font-sans antialiased">
+            <PortfolioHero name={hero.name} tagline={hero.tagline} photo={hero.photo} />
+            <PortfolioAbout title={about.title} description={about.description} />
+            <PortfolioSkills skills={skills} />
+            <PortfolioProjects projects={projects} />
+            <PortfolioResearch research={research} />
+            <PortfolioAchievements achievements={achievements} />
+            <PortfolioExperience experiences={experiences} />
+            <PortfolioVolunteering volunteering={volunteering} />
+            <PortfolioEducation education={education} />
+            <PortfolioSports sports={sports} />
+            <PortfolioHobbies languages={languages} hobbies={hobbies} />
+            <PortfolioFooter 
+                isDarkMode={isDarkMode} 
+                toggleDarkMode={toggleDarkMode} 
+                githubLink={footer.githubLink} 
+                linkedinLink={footer.linkedinLink} 
+            />
+        </div>
+    );
+};
+
+const root = createRoot(document.getElementById("root"));
+root.render(
+    <StrictMode>
+        <App />
+    </StrictMode>
+);
+
+    </script>
+</body>
+
+</html>
