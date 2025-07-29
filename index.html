@@ -9,8 +9,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Calendly Widget -->
+    
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-    <script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/luchomoreira-uy/30min', text: 'Meet me!', color: '#007bff', textColor: '#ffffff' }); }</script>
+    <script type="text/javascript">
+        window.onload = function()
+        { 
+            Calendly.initBadgeWidget
+            (
+                { url: 'https://calendly.com/luchomoreira-uy/30min', text: 'Meet me!', color: '#007bff', textColor: '#ffffff'}
+            ); 
+        }
+    </script>
 
     <!-- Hoja de estilo de Calendly -->
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -262,7 +271,7 @@
                         <ul className="space-y-6">
                             {languages.map((lang, index) => (
                             <li key={index} className="flex items-center space-x-4">
-                                <svg className="w-7 h-7 text-blue-600 dark:text-indigo-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 10l4 4m0-4l-4 4"></path></svg>
+                                
                                 <span className="text-xl text-gray-800 dark:text-gray-200">{lang}</span>
                             </li>
                             ))}
@@ -273,7 +282,6 @@
                         <ul className="space-y-6">
                             {hobbies.map((hobby, index) => (
                             <li key={index} className="flex items-center space-x-4">
-                                <svg className="w-7 h-7 text-blue-600 dark:text-indigo-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
                                 <span className="text-xl text-gray-800 dark:text-gray-200">{hobby}</span>
                             </li>
                             ))}
@@ -451,11 +459,12 @@ const defaultPortfolioData = {
         },
     ],
     languages: [
-        'Spanish (Native)',
-        'English (C1 - Advanced)',
-        'Portuguese (B2 - Intermediate)',
-        'German (A2 -Basic)',
+        '🇺🇾 Spanish (Native)',
+        '🇺🇸 English (C1 - Advanced)',
+        '🇧🇷 Portuguese (B2 - Intermediate)',
+        '🇩🇪 German (A2 - Basic)'
     ],
+
     hobbies: [
         '📸 Taking photos with random ginger people and posting them on Instagram: @pov_ginger',
         '🧉 Drinking mate',
