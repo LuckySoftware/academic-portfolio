@@ -45,14 +45,14 @@ const portfolioData = {
     {
       title: 'Education USA Fair Navigation Designer',
       description: 'Designed an intuitive wayfinding system for the EducationUSA University Fair, guiding attendees through 10+ international university stands. Enhanced visitor experience with clear visual mapping and optimized booth accessibility, improving engagement and navigation efficiency.',
-      imageUrl: '/assets/images/project-3.jpeg',
+      imageUrl: '/assets/images/project-4.jpeg',
       projectLink: 'https://educationusafair.netlify.app/',
       githubLink: 'https://github.com/LuckySoftware/edusa-fair-map',
     },
     {
       title: 'Receipt Vault',
       description: 'I developed a custom payroll management system for my father, automating salary receipts using React and SQL. The solution streamlined recording and keeping, reduced errors, and improved efficiency in employee payment processing.',
-      imageUrl: '/assets/images/project-4.jpeg',
+      imageUrl: '/assets/images/project-3.jpeg',
       projectLink: 'https://github.com/LuckySoftware/receiptVault',
       githubLink: 'https://github.com/LuckySoftware/receiptVault',
     },
