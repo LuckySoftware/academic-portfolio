@@ -33,65 +33,23 @@
 <body>
     <div id="root"></div>
 
-    <script type="text/babel">
-        const { useState, useEffect, useRef, useCallback, useMemo, createContext, useContext, StrictMode } = React; const { createRoot } = ReactDOM;
-        
-        // /components/PortfolioHero.js
-        const PortfolioHero = ({ name, tagline, photo}) => { return (
-        <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-black text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
-            <div className="text-center p-6 max-w-4xl mx-auto">
-                <img src={photo} alt="Profile" className="size-80 rounded-full mx-auto mb-8 border-4 border-blue-400 dark:border-indigo-600 shadow-2xl transition-all duration-500 transform hover:scale-105 hover:rotate-3" />
-                <h1 className="text-6xl md:text-8xl font-extrabold mb-4 leading-tight tracking-tight drop-shadow-lg">
-                    {name}
-                </h1>
-                <p className="text-2xl md:text-3xl font-light opacity-90 tracking-wide">
-                    {tagline}
-                </p>
-            </div>
-        </section>
-        );}; 
+    <script type="module">
+import React from 'https://esm.sh/react@18.2.0';
+import ReactDOM from 'https://esm.sh/react-dom@18.2.0';
+import App from './src/App.js';
 
-        // /components/PortfolioAbout.js 
-        const PortfolioAbout = ({ title = 'Sobre Mí', description = 'Aquí puedes hablar sobre tu pasión, tus motivaciones y lo que te hace único. Destaca tus intereses, tu visión a futuro y cómo tus experiencias te han moldeado. Sé auténtico y personal.' }) => { return (
-        <section className="py-24 bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
-            <div className="container mx-auto px-6 max-w-5xl">
-                <h2 className="text-5xl font-bold text-center mb-12 text-blue-600 dark:text-indigo-400">
-                    {title}
-                </h2>
-                <p className="text-xl leading-relaxed text-center max-w-3xl mx-auto opacity-90">
-                    {description}
-                </p>
-            </div>
-        </section>
-        ); };
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
         
-        // /components/PortfolioSkills.js
-        const SkillBar = ({ name = 'Skill', percentage = 75, color = 'bg-blue-500' }) => (
-        <div className="mb-6">
-            <div className="flex justify-between items-center mb-2">
-                <span className="text-lg font-medium text-gray-800 dark:text-gray-200">{name}</span>
-                <span className="text-sm text-gray-600 dark:text-gray-400">{percentage}%</span>
-            </div>
-            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 shadow-inner">
-                <div className={`${color} h-3 rounded-full transition-all duration-1000 ease-out transform scale-x-100 origin-left`} style={{ width: `${percentage}%` }}></div>
-            </div>
-        </div>
-        ); const PortfolioSkills = ({ skills = [] }) => { return (
-        <section className="py-24 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
-            <div className="container mx-auto px-6 max-w-5xl">
-                <h2 className="text-5xl font-bold text-center mb-16 text-blue-600 dark:text-indigo-400">
-                    Programming Skills
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-                    {skills.map((skill, index) => (
-                    <SkillBar key={index} name={skill.name} percentage={skill.percentage} color={skill.color} /> ))}
-                </div>
-            </div>
-        </section>
-        ); }; 
+         
+
+         
         
-        // /components/PortfolioProjectCard.js
-        const PortfolioProjectCard = ({ title = 'Project Title', description = 'A brief description of the project.', imageUrl = '/placeholder-project.jpg', projectLink = '#', githubLink = '#' }) => { return (
+        
+        
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2 hover:scale-102 border border-gray-200 dark:border-gray-700">
             <img src={imageUrl} alt={title} className="w-full h-56 object-cover object-center transform hover:scale-105 transition-transform duration-500" />
             <div className="p-8">
@@ -108,11 +66,10 @@
           </a>
                 </div>
             </div>
-        </div>
-        ); };
+        
 
-        // /components/PortfolioProjects.js
-        const PortfolioProjects = ({ projects = [] }) => { return (
+        
+        
         <section className="py-24 bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
             <div className="container mx-auto px-6 max-w-6xl">
                 <h2 className="text-5xl font-bold text-center mb-16 text-blue-600 dark:text-indigo-400">
@@ -176,29 +133,22 @@
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{dates}</p>
             <p className="text-gray-700 dark:text-gray-300 text-lg">{description}</p>
         </div>
-        ); const PortfolioExperience = ({ experiences = [] }) => { return (
-        <section className="py-24 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
+        ); const PortfolioVolunteering = ({ volunteering = [] }) => { return (
+        <section className="py-24 bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
             <div className="container mx-auto px-6 max-w-5xl">
                 <h2 className="text-5xl font-bold text-center mb-16 text-blue-600 dark:text-indigo-400">
-                    Work Experience
+                    Volunteering
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    {experiences.map((exp, index) => (
-                    <ExperienceCard key={index} title={exp.title} company={exp.company} dates={exp.dates} description={exp.description} /> ))}
+                    {volunteering.map((vol, index) => (
+                    <VolunteeringCard key={index} organization={vol.organization} role={vol.role} dates={vol.dates} description={vol.description} /> ))}
                 </div>
             </div>
         </section>
         ); };
 
         // /components/PortfolioVolunteering.js
-        const VolunteeringCard = ({ organization = 'Organization', role = 'Role', dates = 'Dates', description = 'Key responsibilities and impact.' }) => (
-        <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 leading-tight">{organization}</h3>
-            <p className="text-blue-600 dark:text-indigo-400 font-semibold mb-1">{role}</p>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{dates}</p>
-            <p className="text-gray-700 dark:text-gray-300 text-lg">{description}</p>
-        </div>
-        ); const PortfolioVolunteering = ({ volunteering = [] }) => { return (
+
         <section className="py-24 bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
             <div className="container mx-auto px-6 max-w-5xl">
                 <h2 className="text-5xl font-bold text-center mb-16 text-blue-600 dark:text-indigo-400">
@@ -213,14 +163,7 @@
         ); };
         
         // /components/PortfolioEducation.js
-        const EducationCard = ({ degree = 'Degree', institution = 'Institution', dates = 'Dates', details = 'GPA/Relevant coursework.' }) => (
-        <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 leading-tight">{degree}</h3>
-            <p className="text-blue-600 dark:text-indigo-400 font-semibold mb-1">{institution}</p>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{dates}</p>
-            <p className="text-gray-700 dark:text-gray-300 text-lg">{details}</p>
-        </div>
-        ); const PortfolioEducation = ({ education = [] }) => { return (
+
         <section className="py-24 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
             <div className="container mx-auto px-6 max-w-5xl">
                 <h2 className="text-5xl font-bold text-center mb-16 text-blue-600 dark:text-indigo-400">
@@ -235,16 +178,7 @@
         ); };
         
         // /components/PortfolioSports.js
-        const SportCard = ({ name = 'Sport', achievements = [] }) => (
-        <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 leading-tight">{name}</h3>
-            <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2 text-lg">
-                {achievements.map((ach, idx) => (
-                <li key={idx}>{ach}</li>
-                ))}
-            </ul>
-        </div>
-        ); const PortfolioSports = ({ sports = [] }) => { return (
+
         <section className="py-24 bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-700 ease-in-out">
             <div className="container mx-auto px-6 max-w-5xl">
                 <h2 className="text-5xl font-bold text-center mb-16 text-blue-600 dark:text-indigo-400">
@@ -319,12 +253,11 @@
         </footer>
         ); };
         
-// /mock/portfolioData.js
-const defaultPortfolioData = {
+const portfolioData = {
     hero: {
         name: 'Luciano Moreira',
         tagline: 'Data Scientist | Rugby Player | Robotics & A.I. Enthusiast',
-        photo: '/public/assets/images/profile-pic.jpeg', // Updated placeholder for better visual
+        photo: '/public/assets/images/profile-pic.jpeg',
     },
     about: {
         title: 'About Me',
@@ -489,82 +422,7 @@ const defaultPortfolioData = {
 };
 
 // /App.js
-const App = () => {
-    const [isDarkMode, setIsDarkMode] = useState(false);
 
-    useEffect(() => {
-        // Check for user's preferred color scheme
-        const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const savedMode = localStorage.getItem('darkMode');
-
-        if (savedMode === 'true') {
-            setIsDarkMode(true);
-        } else if (savedMode === 'false') {
-            setIsDarkMode(false);
-        } else {
-            setIsDarkMode(prefersDarkMode);
-        }
-    }, []);
-
-    useEffect(() => {
-        if (isDarkMode) {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('darkMode', 'true');
-        } else {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('darkMode', 'false');
-        }
-    }, [isDarkMode]);
-
-    const toggleDarkMode = () => {
-        setIsDarkMode(!isDarkMode);
-    };
-
-    const { 
-        hero, 
-        about, 
-        skills, 
-        projects, 
-        research, 
-        achievements, 
-        experiences, 
-        volunteering, 
-        education, 
-        sports, 
-        languages, 
-        hobbies, 
-        footer 
-    } = defaultPortfolioData;
-
-    return (
-        <div className="font-sans antialiased">
-            <PortfolioHero name={hero.name} tagline={hero.tagline} photo={hero.photo} />
-            <PortfolioAbout title={about.title} description={about.description} />
-            <PortfolioSkills skills={skills} />
-            <PortfolioProjects projects={projects} />
-            <PortfolioResearch research={research} />
-            <PortfolioAchievements achievements={achievements} />
-            <PortfolioExperience experiences={experiences} />
-            <PortfolioVolunteering volunteering={volunteering} />
-            <PortfolioEducation education={education} />
-            <PortfolioSports sports={sports} />
-            <PortfolioHobbies languages={languages} hobbies={hobbies} />
-            <PortfolioFooter 
-                isDarkMode={isDarkMode} 
-                toggleDarkMode={toggleDarkMode} 
-                githubLink={footer.githubLink} 
-                linkedinLink={footer.linkedinLink} 
-            />
-        </div>
-    );
-};
-
-const root = createRoot(document.getElementById("root"));
-root.render(
-    <StrictMode>
-        <App />
-    </StrictMode>
-);
 
     </script>
 </body>
