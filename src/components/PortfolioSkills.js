@@ -1,14 +1,9 @@
 import React from 'react';
 // /components/PortfolioSkills.js
-const SkillBar = ({ name = 'Skill', percentage = 75, color = 'bg-blue-500' }) => (
-    <div className="mb-6">
-        <div className="flex justify-between items-center mb-2">
-            <span className="text-lg font-medium text-gray-800 dark:text-gray-200">{name}</span>
-            <span className="text-sm text-gray-600 dark:text-gray-400">{percentage}%</span>
-        </div>
-        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 shadow-inner">
-            <div className={`${color} h-3 rounded-full transition-all duration-1000 ease-out transform scale-x-100 origin-left`} style={{ width: `${percentage}%` }}></div>
-        </div>
+const SkillLogo = ({ name = 'Skill', logo = '' }) => (
+    <div className="flex items-center space-x-6 mb-8">
+        <img src={logo} alt={name} className="w-16 h-16 object-contain" />
+        <span className="text-2xl font-semibold text-gray-800 dark:text-gray-200">{name}</span>
     </div>
 ); const PortfolioSkills = ({ skills = [] }) => {
     return (
@@ -19,7 +14,8 @@ const SkillBar = ({ name = 'Skill', percentage = 75, color = 'bg-blue-500' }) =>
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
                     {skills.map((skill, index) => (
-                        <SkillBar key={index} name={skill.name} percentage={skill.percentage} color={skill.color} />))}
+                        <SkillLogo key={index} name={skill.name} logo={skill.logo} />
+                    ))}
                 </div>
             </div>
         </section>
