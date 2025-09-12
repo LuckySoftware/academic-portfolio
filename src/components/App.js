@@ -30,7 +30,7 @@ const portfolioData = {
     { name: 'HTML', logo: '/assets/images/html.png' },
     { name: 'JavaScript', logo: '/assets/images/js.png' },
     { name: 'Git', logo: '/assets/images/git.png' },
-    { name: 'SQL', logo: '/assets/images/sql.png' },
+    { name: 'SQL Databases', logo: '/assets/images/sql.png' },
     { name: 'Linux Server', logo: '/assets/images/linux.png' },
   ],
   projects: [
@@ -40,6 +40,13 @@ const portfolioData = {
       imageUrl: '/assets/images/project-1.jpeg',
       projectLink: 'https://github.com/LuckySoftware/data-analyzer',
       githubLink: 'https://github.com/LuckySoftware/data-analyzer',
+    },
+    {
+      title: 'Directory Sentry System',
+      description: 'Sentry is a lightweight monitoring tool that keeps a constant watch over your directories. It automatically detects when new files appear (or when no changes occur) and instantly notifies you by email. Designed for simplicity and reliability, Sentry helps teams and individuals stay on top of critical file updates without manual checking. Whether youre tracking incoming data, monitoring workflows, or ensuring timely deliveries, Sentry acts as your digital guard—always alert, always reporting.',
+      imageUrl: '/assets/images/dirsentry.jpeg',
+      projectLink: 'https://github.com/LuckySoftware/DirSentry',
+      githubLink: 'https://github.com/LuckySoftware/DirSentry',
     },
     {
       title: 'Education USA Fair Navigation Designer',
