@@ -2,12 +2,19 @@ import React from 'react';
 // /components/PortfolioProjectCard.js
 const PortfolioProjectCard = ({ title = 'Project Title', description = 'A brief description of the project.', imageUrl = '/placeholder-project.jpg', projectLink = '#', githubLink = '#' }) => {
     return (
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2 hover:scale-102 border border-gray-200 dark:border-gray-700">
+        // Contenedor principal con flex-col para alinear contenido verticalmente
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2 hover:scale-102 border border-gray-200 dark:border-gray-700 flex flex-col h-full">
+            {/* Imagen con altura fija */}
             <img src={imageUrl} alt={title} className="w-full h-56 object-cover object-center transform hover:scale-105 transition-transform duration-500" />
-            <div className="p-8">
-                <h3 className="text-3xl font-bold mb-3 text-gray-900 dark:text-white leading-tight">{title}</h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg">{description}</p>
-                <div className="flex space-x-4">
+            {/* Contenedor de contenido con flex-col y flex-grow para ocupar el espacio disponible */}
+            <div className="p-8 flex flex-col flex-grow">
+                {/* Contenido principal */}
+                <div className="flex-grow">
+                    <h3 className="text-3xl font-bold mb-3 text-gray-900 dark:text-white leading-tight">{title}</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg">{description}</p>
+                </div>
+                {/* Botones siempre al final */}
+                <div className="flex space-x-4 mt-auto">
                     <a href={projectLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300 text-base font-semibold shadow-md hover:shadow-lg">
                         Project
                         <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0l-6 6"></path></svg>
