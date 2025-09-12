@@ -44,7 +44,7 @@ const portfolioData = {
     {
       title: 'Directory Sentry System',
       description: 'Sentry is a lightweight monitoring tool that keeps a constant watch over your directories. It automatically detects when new files appear (or when no changes occur) and instantly notifies you by email. Designed for simplicity and reliability, Sentry helps teams and individuals stay on top of critical file updates without manual checking. Whether youre tracking incoming data, monitoring workflows, or ensuring timely deliveries, Sentry acts as your digital guard—always alert, always reporting.',
-      imageUrl: '/assets/images/dirsentry.jpeg',
+      imageUrl: '/assets/images/project-5.jpeg',
       projectLink: 'https://github.com/LuckySoftware/DirSentry',
       githubLink: 'https://github.com/LuckySoftware/DirSentry',
     },
