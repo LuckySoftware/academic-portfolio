@@ -36,7 +36,7 @@ const portfolioData = {
   projects: [
     {
       title: 'Wind Power Data Analytics System',
-      description: 'Designed and implemented a wind energy data analytics system that collects and processes turbine performance metrics into a centralized database. The platform enhances operational efficiency, enables predictive maintenance through data driven insights, and supports more sustainable energy management.',
+      description: 'Designed and implemented a wind energy data analytics system that collects and processes turbine performance metrics into a centralized database. The platform enhances operational efficiency, enables predictive maintenance through data driven insights, and supports more sustainable energy management.', 
       imageUrl: '/assets/images/project-1.jpeg',
       projectLink: 'https://github.com/LuckySoftware/data-analyzer',
       githubLink: 'https://github.com/LuckySoftware/data-analyzer',
@@ -76,6 +76,7 @@ const portfolioData = {
     },
   ],
   achievements: [
+    'Supervisory Control and Data Acquisition (SCADA) Course | 2025',
     'Selected Student for a Quantum Computer Course at Uruguayan Faculty | 2025',
     'National Programming and Robotics Olimpyads | 2024',
     'Applied 3D Printing Techniques for Enviromental Sustainability Course | 2024',
@@ -86,9 +87,15 @@ const portfolioData = {
   ],
   experiences: [
     {
+      title: 'Internship as a Data Analyst',
+      company: 'Ventus Global',
+      dates: 'Aug 2025 - Present',
+      description: 'Work as a Data Analyst and Tool Developer, creating automation scripts and intelligent solutions to optimize processes. Manage SCADA systems and analyze plant data to support operational efficiency and informed decision-making.',
+    },
+    {
       title: 'Waiter & Bartender',
       company: 'FP Catering',
-      dates: 'Since Nov 2024',
+      dates: 'Nov 2024 - Jul 2025',
       description: 'Provide customer service and handle orders in a fast-paced environment. Work weekends while managing studies.',
     },
     {
