@@ -36,14 +36,14 @@ const portfolioData = {
   projects: [
     {
       title: 'Wind Power Data Analytics System',
-      description: 'Designed a wind energy data analytics system that processes turbine metrics into a centralized database, boosting efficiency and predictive maintenance.',
+      description: 'Designed and implemented a wind energy data analytics system that collects and processes turbine performance metrics into a centralized database. The platform enhances operational efficiency, enables predictive maintenance through data driven insights, and supports more sustainable energy management.',
       imageUrl: '/assets/images/project-1.jpeg',
       projectLink: 'https://github.com/LuckySoftware/data-analyzer',
       githubLink: 'https://github.com/LuckySoftware/data-analyzer',
     },
     {
       title: 'Directory Sentry System',
-      description: 'Sentry is a smart, lightweight tool that keeps constant watch over your directories. It detects new files—or the lack of them—and instantly notifies you by email. Designed for simplicity and reliability, Sentry makes it easy to stay informed, ensuring you never miss an important update in your workflow.',
+      description: 'Sentry is a smart, lightweight tool that keeps constant watch over your directories. It detects new files, or the lack of them and instantly notifies you by email. Designed for simplicity and reliability, Sentry makes it easy to stay informed, ensuring you never miss an important update in your workflow.',
       imageUrl: '/assets/images/project-5.jpeg',
       projectLink: 'https://github.com/LuckySoftware/DirSentry',
       githubLink: 'https://github.com/LuckySoftware/DirSentry',
