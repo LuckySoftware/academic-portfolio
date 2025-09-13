@@ -15,7 +15,7 @@ import PortfolioFooter from './PortfolioFooter.js';
 const portfolioData = {
   hero: {
     name: 'Luciano Moreira',
-    tagline: 'Tool developer | Web Developer | Data Analyst | Rugby Player | Robotics & A.I. Enthusiast',
+    tagline: 'Tool developer | Web Developer | Data Analyst | Rugby Player | IT Technician | Robotics & A.I. Enthusiast',
     photo: '/assets/images/profile-pic.jpeg',
   },
   about: {
