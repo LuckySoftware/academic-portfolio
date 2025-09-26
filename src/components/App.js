@@ -30,7 +30,7 @@ const portfolioData = {
     { name: 'Bash Script', logo: '/assets/images/bash.png' },
     { name: 'CSS', logo: '/assets/images/css.png' },
     { name: 'HTML', logo: '/assets/images/html.png' },
-    { name: 'SQL Databases', logo: '/assets/images/sql.png' },
+    { name: 'MySQL', logo: '/assets/images/mysql.png' },
     { name: 'Linux Server', logo: '/assets/images/linux.png' },
     { name: 'PostgreSQL', logo: '/assets/images/postgresql.png' },
     { name: 'Node', logo: '/assets/images/node.png' },
