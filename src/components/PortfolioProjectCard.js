@@ -11,7 +11,7 @@ const PortfolioProjectCard = ({ title = 'Project Title', description = 'A brief 
                 {/* Contenido principal */}
                 <div className="flex-grow">
                     <h3 className="text-3xl font-bold mb-3 text-gray-900 dark:text-white leading-tight">{title}</h3>
-                    <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg text-justify">{description}</p>
+                    <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg">{description}</p>
                 </div>
                 {/* Botones siempre al final */}
                 <div className="flex space-x-4 mt-auto">
