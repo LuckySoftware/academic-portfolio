@@ -26,16 +26,17 @@ const portfolioData = {
     { name: 'Java', logo: '/assets/images/java.png' },
     { name: 'Python', logo: '/assets/images/python.png' },
     { name: 'PHP', logo: '/assets/images/php.png' },
+    { name: 'JavaScript', logo: '/assets/images/js.png' },
+    { name: 'Bash Script', logo: '/assets/images/bash.png' },
     { name: 'CSS', logo: '/assets/images/css.png' },
     { name: 'HTML', logo: '/assets/images/html.png' },
-    { name: 'JavaScript', logo: '/assets/images/js.png' },
-    { name: 'Git', logo: '/assets/images/git.png' },
     { name: 'SQL Databases', logo: '/assets/images/sql.png' },
     { name: 'Linux Server', logo: '/assets/images/linux.png' },
     { name: 'PostgreSQL', logo: '/assets/images/postgresql.png' },
-    { name: 'Docker', logo: '/assets/images/docker.png' },
-    { name: 'Bash Script', logo: '/assets/images/bash.png' },
     { name: 'Node.js', logo: '/assets/images/node.png' },
+    { name: 'Postman', logo: '/assets/images/postman.png' },
+    { name: 'Docker', logo: '/assets/images/docker.png' },
+    { name: 'Git', logo: '/assets/images/git.png' }
   ],
   projects: [
     {
