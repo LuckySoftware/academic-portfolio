@@ -33,7 +33,8 @@ const portfolioData = {
     { name: 'SQL Databases', logo: '/assets/images/sql.png' },
     { name: 'Linux Server', logo: '/assets/images/linux.png' },
     { name: 'PostgreSQL', logo: '/assets/images/postgresql.png' },
-    { name: 'Node.js', logo: '/assets/images/node.png' },
+    { name: 'Node', logo: '/assets/images/node.png' },
+    { name: 'React', logo: '/assets/images/react.png' },
     { name: 'Postman', logo: '/assets/images/postman.png' },
     { name: 'Docker', logo: '/assets/images/docker.png' },
     { name: 'Git', logo: '/assets/images/git.png' }
