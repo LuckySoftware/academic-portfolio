@@ -125,11 +125,17 @@ const portfolioData = {
       description: 'I organized and led a workshop at Hogar Israelita, a nursing home, where my team and I taught seniors (aged 70 and above) how to use smartphones and connect with their families through calls.',
     },
     {
-      organization: 'EducationUSA University Fair',
+      organization: '2024 EducationUSA University Fair',
       role: 'Volunteer & Student',
       dates: 'Sep 2024',
       description: 'Took part in the staff team of the 2024 Fair of USA Universities to encourage more people on studying abroad.',
     },
+    {
+      organization: '2025 EducationUSA University Fair',
+      role: 'External Volunteer & Web developer',
+      dates: 'Sep 2025',
+      description: "In 2025, although EducationUSA did not recruit CCC senior students for the USA Universities Fair, I voluntarily contributed by developing a web page for the event as a way to give back for all the support I received from EducationUSA."
+    }
   ],
   education: [
     {
