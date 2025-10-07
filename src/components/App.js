@@ -55,6 +55,13 @@ const portfolioData = {
       githubLink: 'https://github.com/LuckySoftware/DirSentry',
     },
     {
+      title: 'Aletheia - Data Validator',
+      description: 'Aletheia is an intelligent validation engine that turns messy CSV and Excel files into clean, analysis-ready datasets. It automatically enforces your custom rules to find and isolate errors like bad values or duplicates. This saves researchers hours of manual work and builds a foundation of trustworthy data for accurate insights.',
+      imageUrl: '/assets/images/project-6.jpeg',
+      projectLink: 'https://github.com/LuckySoftware/Aletheia',
+      githubLink: 'https://github.com/LuckySoftware/Aletheia',
+    },
+    {
       title: 'Education USA Fair Navigation Designer',
       description: 'Designed an intuitive wayfinding system for the EducationUSA University Fair, guiding attendees through 10+ international university stands. Enhanced visitor experience with clear visual mapping and optimized booth accessibility, improving engagement and navigation efficiency.',
       imageUrl: '/assets/images/project-4.jpeg',
