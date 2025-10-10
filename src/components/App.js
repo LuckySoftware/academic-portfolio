@@ -78,7 +78,7 @@ const portfolioData = {
     {
       title: 'Serpens: Desktop Financial Calculator',
       description: 'Designed and implemented a cross-platform desktop calculator in Python with an intuitive GUI (PyQt6/PySide6). The application automates critical financial analysis, calculating Net Present Value (NPV), Contribution Margin, and Break-Even Point.',
-      imageUrl: '/assets/images/project-6.jpeg',
+      imageUrl: '/assets/images/project-7.jpeg',
       projectLink: 'https://github.com/LuckySoftware/serpens/releases',
       githubLink: 'https://github.com/LuckySoftware/serpens',
     },
