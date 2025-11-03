@@ -82,6 +82,13 @@ const portfolioData = {
       projectLink: 'https://github.com/LuckySoftware/serpens/releases',
       githubLink: 'https://github.com/LuckySoftware/serpens',
     },
+    {
+      title: 'HefestOps:',
+      description: 'A Bash-based server management suite for Fedora Server 42, featuring both CLI and TUI modes. Inspired by Hephaestus, it unifies user management, firewall control, and automated backups through a single, cohesive toolset.',
+      imageUrl: '/assets/images/project-8.jpeg',
+      projectLink: 'https://github.com/LuckySoftware/serpens/releases',
+      githubLink: 'https://github.com/LuckySoftware/serpens',
+    },
   ],
   research: [
     {
