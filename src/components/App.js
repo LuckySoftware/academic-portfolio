@@ -196,43 +196,14 @@ const portfolioData = {
     '🇧🇷 Portuguese (B2 - Intermediate)',
     '🇩🇪 German (A2 - Basic)'
   ],
-  hobbies:
-  [
-    {
-      text: '📸 Taking photos with random ginger people and posting them on Instagram:',
-      linkText: '@pov_ginger',
-      url: 'https://www.instagram.com/pov_ginger',
-    },
-    {
-      text: '🧉 Drinking mate',
-      linkText: null, // No hay link
-      url: null,
-    },
-    {
-      text: '🧠 Learning about something new every day',
-      linkText: null,
-      url: null,
-    },
-    {
-      text: '🏋️‍♂️ Going to the GYM',
-      linkText: null,
-      url: null,
-    },
-    {
-      text: '🎶 Listening to country music',
-      linkText: null,
-      url: null,
-    },
-    {
-      text: '🌅 Taking sunset photos',
-      linkText: null,
-      url: null,
-    },
-    {
-      text: '🥾 Hiking and exploring nature',
-      linkText: null,
-      url: null,
-    },
+  hobbies: [
+    '📸 Taking photos with random ginger people and posting them on Instagram: @pov_ginger',
+    '🧉 Drinking mate',
+    '🧠 Learning about something new every day',
+    '🏋️‍♂️ Going to the GYM',
+    '🎶 Listening to country music',
+    '🌅 Taking sunset photos',
+    '🥾 Hiking and exploring nature',
   ],
   footer: {
     githubLink: 'https://github.com/LuckySoftware',
